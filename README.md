@@ -1,3 +1,3 @@
-# Coding excercise repo
+# Coding exercise(s) repo
 
-This repository serves as playground for various coding excercises, experiments, ... and what not.
+This repository serves as playground for various coding exercises, experiments, ... and what not.

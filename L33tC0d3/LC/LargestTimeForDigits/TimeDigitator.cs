@@ -45,7 +45,7 @@ namespace LC.LargestTimeForDigits
                         }
 
                         // we can calculate `l` right away:
-                        // - 6 possible combinations
+                        // - 6 is max sum of positions: 0 + 1 + 2 + 3
                         // - must not equal to any of `i`, `j` or `k`
                         //
                         // for (var l = 0; l < 4; l++) {
@@ -54,9 +54,9 @@ namespace LC.LargestTimeForDigits
                         // }
                         int l = 6 - i - j - k;
 
-                        int hours = A[i] * 10 + A[j];
-                        int minutes = A[k] * 10 + A[l];
-                        if (hours < 24 && minutes < 60)
+                        int hours = JoinDigits(A[i], A[j]);
+                        int minutes = JoinDigits(A[k], A[l]);
+                        if (IsValidTime(hours, minutes))
                         {
                             times.Add((hours, minutes));
                         }
@@ -71,10 +71,16 @@ namespace LC.LargestTimeForDigits
 
             // find the largest time
             (int h, int m) = times
-                .OrderByDescending(t => t.Hours * 60 + t.Minutes)
+                .OrderByDescending(t => GetTotalMinutes(t.Hours, t.Minutes))
                 .First();
 
             return $"{h:D2}:{m:D2}";
         }
+
+        private static int JoinDigits(in int tens, in int units) => tens * 10 + units;
+
+        private static bool IsValidTime(in int hours, in int minutes) => hours < 24 && minutes < 60;
+
+        private static int GetTotalMinutes(in int hours, in int minutes) => hours * 60 + minutes;
     }
 }

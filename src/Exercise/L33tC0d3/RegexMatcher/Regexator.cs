@@ -7,8 +7,8 @@
         {
             // dynamic programming (https://en.wikipedia.org/wiki/Dynamic_programming)
             // (implementation taken from LeetCode)
-            bool[,] dp = new bool[s.Length + 1, p.Length + 1];
-            dp[s.Length, p.Length] = true;
+            bool[,] memo = new bool[s.Length + 1, p.Length + 1];
+            memo[s.Length, p.Length] = true;
 
             for (int i = s.Length; i >= 0; i--)
             {
@@ -18,16 +18,16 @@
 
                     if (j + 1 < p.Length && p[j + 1] == '*')
                     {
-                        dp[i,j] = dp[i, j + 2] || firstMatch && dp[i + 1, j];
+                        memo[i, j] = memo[i, j + 2] || firstMatch && memo[i + 1, j];
                     }
                     else
                     {
-                        dp[i, j] = firstMatch && dp[i + 1, j + 1];
+                        memo[i, j] = firstMatch && memo[i + 1, j + 1];
                     }
                 }
             }
 
-            return dp[0, 0];
+            return memo[0, 0];
         }
     }
 }

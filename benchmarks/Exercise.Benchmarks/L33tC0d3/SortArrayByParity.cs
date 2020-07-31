@@ -9,7 +9,7 @@ namespace Exercise.Benchmarks.L33tC0d3
     [Orderer(SummaryOrderPolicy.FastestToSlowest)]
     public class SortArrayByParity
     {
-        private ParityArraySortator _sortator = new ParityArraySortator();
+        private readonly ParityArraySortator _sortator = new ParityArraySortator();
         private int[] _data;
 
         [Params(4, 128, 512)]
@@ -18,7 +18,7 @@ namespace Exercise.Benchmarks.L33tC0d3
         [GlobalSetup]
         public void Setup()
         {
-            var rnd = new Bogus.Randomizer();
+            var rnd = new Bogus.Randomizer(1234);
             _data = Enumerable
                 .Range(0, InputSize)
                 .Select(_ => rnd.Number(0, 100))

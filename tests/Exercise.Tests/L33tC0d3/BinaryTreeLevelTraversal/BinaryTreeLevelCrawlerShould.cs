@@ -20,7 +20,7 @@ namespace Exercise.Tests.L33tC0d3.BinaryTreeLevelTraversal
             Assert.True(expected.SequenceEqual(result, new InnerListComparer()));
         }
 
-        public static IEnumerable<object[]> GenerateTestData()
+        public static IEnumerable<object?[]> GenerateTestData()
         {
             var root = new TreeNode(3)
             {
@@ -32,7 +32,7 @@ namespace Exercise.Tests.L33tC0d3.BinaryTreeLevelTraversal
                 }
             };
 
-            yield return new object[]
+            yield return new object?[]
             {
                 root,
                 new List<IList<int>>
@@ -43,12 +43,12 @@ namespace Exercise.Tests.L33tC0d3.BinaryTreeLevelTraversal
                 }
             };
 
-            yield return new object[] { null, new List<IList<int>>(0) };
+            yield return new object?[] { null, new List<IList<int>>(0) };
         }
 
         private class InnerListComparer : IEqualityComparer<IList<int>>
         {
-            public bool Equals(IList<int> x, IList<int> y) => x.SequenceEqual(y);
+            public bool Equals(IList<int>? x, IList<int>? y) => x != null && y != null && x.SequenceEqual(y);
 
             // return `1` for any input to enforce calling of `Equals`... much clever, so hacky
             public int GetHashCode(IList<int> obj) => 1;

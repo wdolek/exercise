@@ -48,8 +48,8 @@ namespace Exercise.L33tC0d3.BinaryTreeLevelTraversal
         public class TreeNode
         {
             public int val;
-            public TreeNode left;
-            public TreeNode right;
+            public TreeNode? left;
+            public TreeNode? right;
             public TreeNode(int x) { val = x; }
         }
     }

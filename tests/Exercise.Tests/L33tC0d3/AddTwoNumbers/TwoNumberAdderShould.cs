@@ -36,7 +36,7 @@ namespace Exercise.Tests.L33tC0d3.AddTwoNumbers
             };
         }
 
-        private static IEnumerable<int> Unwrap(TwoNumberAdder.ListNode node)
+        private static IEnumerable<int> Unwrap(TwoNumberAdder.ListNode? node)
         {
             var tmp = node;
             while (tmp != null)
@@ -46,7 +46,7 @@ namespace Exercise.Tests.L33tC0d3.AddTwoNumbers
             }
         }
 
-        private static int ToInt(TwoNumberAdder.ListNode node)
+        private static int ToInt(TwoNumberAdder.ListNode? node)
         {
             var nums = Unwrap(node).ToArray();
             var result = 0;

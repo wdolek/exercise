@@ -32,7 +32,7 @@ namespace Exercise.L33tC0d3.LargestNumberator
 
         private class NumberPairComparer : IComparer<string>
         {
-            public int Compare(string x, string y) =>
+            public int Compare(string? x, string? y) =>
                 string.Compare(
                     x + y,
                     y + x,

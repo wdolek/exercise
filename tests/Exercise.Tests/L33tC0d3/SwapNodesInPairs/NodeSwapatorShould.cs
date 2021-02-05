@@ -39,17 +39,46 @@ namespace Exercise.Tests.L33tC0d3.SwapNodesInPairs
             Assert.True(expected.SequenceEqual(AsEnumerable(result)));
         }
 
-        public static IEnumerable<object[]> GenerateTestData()
+        public static IEnumerable<object?[]> GenerateTestData()
         {
-            yield return new object[] { AsLinkedList(1, 2, 3, 4), new[] { 2, 1, 4, 3 } };
-            yield return new object[] { AsLinkedList(1), new[] { 1 } };
-            yield return new object[] { AsLinkedList(1, 2), new[] { 2, 1 } };
-            yield return new object[] { AsLinkedList(1, 2, 3), new[] { 2, 1, 3 } };
-            yield return new object[] { AsLinkedList(1, 2, 3, 4, 5, 6, 7, 8, 9), new[] { 2, 1, 4, 3, 6, 5, 8, 7, 9 } };
-            yield return new object[] { null, new int[0] };
+            yield return new object?[]
+            {
+                AsLinkedList(1, 2, 3, 4),
+                new[] { 2, 1, 4, 3 }
+            };
+
+            yield return new object?[]
+            {
+                AsLinkedList(1),
+                new[] { 1 }
+            };
+
+            yield return new object?[]
+            {
+                AsLinkedList(1, 2),
+                new[] { 2, 1 }
+            };
+
+            yield return new object?[]
+            {
+                AsLinkedList(1, 2, 3),
+                new[] { 2, 1, 3 }
+            };
+
+            yield return new object?[]
+            {
+                AsLinkedList(1, 2, 3, 4, 5, 6, 7, 8, 9),
+                new[] { 2, 1, 4, 3, 6, 5, 8, 7, 9 }
+            };
+
+            yield return new object?[]
+            {
+                null,
+                Array.Empty<int>()
+            };
         }
 
-        private static ListNode AsLinkedList(params int[] nums)
+        private static ListNode? AsLinkedList(params int[] nums)
         {
             var head = new ListNode(0);
             var point = head;
@@ -62,7 +91,7 @@ namespace Exercise.Tests.L33tC0d3.SwapNodesInPairs
             return head.next;
         }
 
-        private static IEnumerable<int> AsEnumerable(ListNode head)
+        private static IEnumerable<int> AsEnumerable(ListNode? head)
         {
             var point = head;
             while (point != null)

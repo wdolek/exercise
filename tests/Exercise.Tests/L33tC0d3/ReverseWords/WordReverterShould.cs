@@ -16,7 +16,7 @@ namespace Exercise.Tests.L33tC0d3.ReverseWords
             Assert.Equal(expected, result);
         }
 
-        public static IEnumerable<object[]> GenerateTestData()
+        public static IEnumerable<object?[]> GenerateTestData()
         {
             yield return new[] { "the sky is blue", "blue is sky the" };
             yield return new[] { "  hello world!  ", "world! hello" };

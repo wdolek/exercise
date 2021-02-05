@@ -38,8 +38,13 @@ namespace Exercise.L33tC0d3.GroupAnagrams
         {
             public static readonly AnagramComparator Instance = new AnagramComparator();
 
-            public bool Equals(string x, string y)
+            public bool Equals(string? x, string? y)
             {
+                if (x is null || y is null)
+                {
+                    return false;
+                }
+
                 // ----------------------------
                 // taken from `../ValidAnagram`
                 // ----------------------------

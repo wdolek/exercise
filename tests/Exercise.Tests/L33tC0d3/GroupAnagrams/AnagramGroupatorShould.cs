@@ -52,8 +52,10 @@ namespace Exercise.Tests.L33tC0d3.GroupAnagrams
 
         private class ListStringComparer : IEqualityComparer<IList<string>>
         {
-            public bool Equals(IList<string> first, IList<string> second) =>
-                first
+            public bool Equals(IList<string>? first, IList<string>? second) =>
+                first != null
+                && second != null
+                && first
                     .OrderBy(s => s, StringComparer.OrdinalIgnoreCase)
                     .SequenceEqual(
                         second.OrderBy(s => s, StringComparer.OrdinalIgnoreCase),

@@ -5,12 +5,12 @@ namespace Exercise.L33tC0d3.SudokuValidator
     // https://leetcode.com/problems/valid-sudoku/
     public sealed class Sudokator
     {
-        private const int _numOfCells = 9;
-        private const char _emptyCell = '.';
+        private const int NumOfCells = 9;
+        private const char EmptyCell = '.';
 
         public bool IsValidSudoku(char[][] board)
         {
-            if (board == null || board.Length != _numOfCells || board[0].Length != _numOfCells)
+            if (board == null || board.Length != NumOfCells || board[0].Length != NumOfCells)
             {
                 return false;
             }
@@ -21,7 +21,7 @@ namespace Exercise.L33tC0d3.SudokuValidator
         private static bool IsCellValid(char[][] board, ref Span<bool> map, int row, int col)
         {
             var symbol = board[row][col];
-            if (symbol == _emptyCell)
+            if (symbol == EmptyCell)
             {
                 return true;
             }
@@ -43,8 +43,8 @@ namespace Exercise.L33tC0d3.SudokuValidator
 
         private static bool AreRowsAndColsValid(char[][] board)
         {
-            Span<bool> rowMap = stackalloc bool[_numOfCells];
-            Span<bool> colMap = stackalloc bool[_numOfCells];
+            Span<bool> rowMap = stackalloc bool[NumOfCells];
+            Span<bool> colMap = stackalloc bool[NumOfCells];
 
             // | i/j |   0   |   1   |   2   | ...
             // +-----+-------+-------+-------+-----
@@ -58,9 +58,9 @@ namespace Exercise.L33tC0d3.SudokuValidator
 
             // scan rows & cols
             // (since board is NxN, we can swap `i` and `j` to scan rows and cols at once)
-            for (var i = 0; i < _numOfCells; i++)
+            for (var i = 0; i < NumOfCells; i++)
             {
-                for (var j = 0; j < _numOfCells; j++)
+                for (var j = 0; j < NumOfCells; j++)
                 {
                     // row
                     if (!IsCellValid(board, ref rowMap, i, j))
@@ -86,12 +86,12 @@ namespace Exercise.L33tC0d3.SudokuValidator
 
         private static bool AreSubBoxesValid(char[][] board)
         {
-            Span<bool> subMap = stackalloc bool[_numOfCells];
+            Span<bool> subMap = stackalloc bool[NumOfCells];
 
             // go trough sub-box coords: [0,0], [0,3], [0,6], [3,0], [3,3], ...
-            for (var subRow = 0; subRow < _numOfCells; subRow += 3)
+            for (var subRow = 0; subRow < NumOfCells; subRow += 3)
             {
-                for (var subCol = 0; subCol < _numOfCells; subCol += 3)
+                for (var subCol = 0; subCol < NumOfCells; subCol += 3)
                 {
                     // go trough sub-box 3x3 matrix
                     for (var i = subRow; i < subRow + 3; i++)

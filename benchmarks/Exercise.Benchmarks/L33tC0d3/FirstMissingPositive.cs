@@ -12,7 +12,7 @@ namespace Exercise.Benchmarks.L33tC0d3
     public class FirstMissingPositive
     {
         private readonly FirstMissingPositiveFinder _finder = new FirstMissingPositiveFinder();
-        private int[] _data;
+        private int[] _data = null!;
 
         [ParamsSource(nameof(ValuesForB))]
         public (int ContinuousSequenceSize, int NegativeInts, int PositiveAboveInts) Params;

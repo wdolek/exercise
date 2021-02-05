@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Exercise.L33tC0d3.MergeSortedLists;
 using Xunit;
@@ -27,9 +28,9 @@ namespace Exercise.Tests.L33tC0d3.MergeSortedLists
             Assert.Null(result);
         }
 
-        public static IEnumerable<object[]> GenerateInput()
+        public static IEnumerable<object?[]> GenerateInput()
         {
-            yield return new object[]
+            yield return new object?[]
             {
                 new[]
                 {
@@ -40,7 +41,7 @@ namespace Exercise.Tests.L33tC0d3.MergeSortedLists
                 new[] { 1, 1, 2, 3, 4, 4, 5, 6 }
             };
 
-            yield return new object[]
+            yield return new object?[]
             {
                 new[]
                 {
@@ -51,7 +52,7 @@ namespace Exercise.Tests.L33tC0d3.MergeSortedLists
                 new[] { 1, 2, 3 }
             };
 
-            yield return new object[]
+            yield return new object?[]
             {
                 new[]
                 {
@@ -63,16 +64,16 @@ namespace Exercise.Tests.L33tC0d3.MergeSortedLists
             };
         }
 
-        public static IEnumerable<object[]> GenerateEmptyInput()
+        public static IEnumerable<object?[]> GenerateEmptyInput()
         {
-            yield return new object[] { null };
-            yield return new object[] { new ListNode[0] };
+            yield return new object?[] { null };
+            yield return new object?[] { Array.Empty<ListNode>() };
         }
 
-        private static ListNode ConvertToLinkedList(params int[] nums) =>
+        private static ListNode? ConvertToLinkedList(params int[] nums) =>
             ConvertToLinkedList((IEnumerable<int>)nums);
 
-        private static ListNode ConvertToLinkedList(IEnumerable<int> nums)
+        private static ListNode? ConvertToLinkedList(IEnumerable<int> nums)
         {
             var head = new ListNode(0);
             var point = head;
@@ -85,7 +86,7 @@ namespace Exercise.Tests.L33tC0d3.MergeSortedLists
             return head.next;
         }
 
-        private static IEnumerable<int> ConvertToEnumerable(ListNode list)
+        private static IEnumerable<int> ConvertToEnumerable(ListNode? list)
         {
             while (list != null)
             {

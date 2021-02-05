@@ -7,7 +7,7 @@ namespace Exercise.L33tC0d3.LetterCombinations
     // https://leetcode.com/problems/letter-combinations-of-a-phone-number/
     public sealed class LetterCombinator
     {
-        private static Dictionary<char, char[]> _digitCharMap = new Dictionary<char, char[]>
+        private static readonly Dictionary<char, char[]> _digitCharMap = new Dictionary<char, char[]>
         {
             ['1'] = new[] { '1' },
             ['2'] = new[] { 'a', 'b', 'c' },
@@ -35,7 +35,7 @@ namespace Exercise.L33tC0d3.LetterCombinations
                 var digit = digits[i];
                 if (!_digitCharMap.TryGetValue(digit, out var subst))
                 {
-                    throw new ArgumentNullException();
+                    throw new ArgumentNullException(nameof(digits), "Unrecognized digit passed.");
                 }
 
                 substs[i] = subst;
@@ -83,7 +83,7 @@ namespace Exercise.L33tC0d3.LetterCombinations
             var result = new List<string>(subst.Length);
             foreach (var c in subst)
             {
-                result.AddRange(BuildCombination(current + c, substs.Slice(1)));
+                result.AddRange(BuildCombination(current + c, substs[1..]));
             }
 
             return result;

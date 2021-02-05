@@ -6,7 +6,7 @@ namespace Exercise.L33tC0d3.SwapNodesInPairs
     // https://leetcode.com/problems/swap-nodes-in-pairs/
     public sealed class NodeSwapator
     {
-        public ListNode SwapPairs(ListNode head)
+        public ListNode? SwapPairs(ListNode head)
         {
             if (head is null || head.next is null)
             {
@@ -32,7 +32,7 @@ namespace Exercise.L33tC0d3.SwapNodesInPairs
             return AsLinkedList(values);
         }
 
-        public ListNode SwapPairsRecursion(ListNode head)
+        public ListNode? SwapPairsRecursion(ListNode? head)
         {
             // base case
             if (head is null || head.next is null)
@@ -68,7 +68,7 @@ namespace Exercise.L33tC0d3.SwapNodesInPairs
             return second;
         }
 
-        public ListNode SwapPairsInLoop(ListNode head)
+        public ListNode? SwapPairsInLoop(ListNode head)
         {
             if (head is null || head.next is null)
             {
@@ -82,7 +82,7 @@ namespace Exercise.L33tC0d3.SwapNodesInPairs
             head = head.next;
 
             // perform swapping
-            ListNode previous = null;
+            ListNode? previous = null;
             while (point != null)
             {
                 var first = point;
@@ -125,7 +125,7 @@ namespace Exercise.L33tC0d3.SwapNodesInPairs
             }
         }
 
-        private static ListNode AsLinkedList(int[] nums)
+        private static ListNode? AsLinkedList(int[] nums)
         {
             var head = new ListNode(0);
             var point = head;
@@ -141,7 +141,7 @@ namespace Exercise.L33tC0d3.SwapNodesInPairs
         public sealed class ListNode
         {
             public int val;
-            public ListNode next;
+            public ListNode? next;
             public ListNode(int x) { val = x; }
         }
     }

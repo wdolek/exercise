@@ -5,7 +5,7 @@ namespace Exercise.L33tC0d3.AddTwoNumbers
     // https://leetcode.com/problems/add-two-numbers/
     public sealed class TwoNumberAdder
     {
-        public ListNode AddTwoNumbers(ListNode l1, ListNode l2)
+        public ListNode? AddTwoNumbers(ListNode l1, ListNode l2)
         {
             //   [2 -> 4 -> 3]
             // + [5 -> 6 -> 4]
@@ -55,7 +55,7 @@ namespace Exercise.L33tC0d3.AddTwoNumbers
         public sealed class ListNode
         {
             public int val;
-            public ListNode next;
+            public ListNode? next;
 
             public ListNode(int x)
             {

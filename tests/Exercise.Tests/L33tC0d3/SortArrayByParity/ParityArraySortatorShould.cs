@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Exercise.L33tC0d3.SortArrayByParity;
 using Xunit;
@@ -73,42 +74,42 @@ namespace Exercise.Tests.L33tC0d3.SortArrayByParity
             AssertParity(expected, actual);
         }
 
-        public static IEnumerable<object[]> GenerateTestData()
+        public static IEnumerable<object?[]> GenerateTestData()
         {
-            yield return new object[]
+            yield return new object?[]
             {
                 new[] { 3, 1, 2, 4 },
                 new[] { 2, 4, 1, 3 }
             };
 
-            yield return new object[]
+            yield return new object?[]
             {
                 new[] { 5, 7, 2, 4, 0, 1, 3, 5, 8 },
                 new[] { 0, 2, 4, 8, 1, 3, 5, 5, 7 }
             };
 
-            yield return new object[]
+            yield return new object?[]
             {
                 new [] { 2, 4, 6, 8 },
                 new [] { 2, 4, 6, 8 }
             };
 
-            yield return new object[]
+            yield return new object?[]
             {
                 new [] { 1, 3, 5, 7 },
                 new [] { 1, 3, 5, 7 }
             };
 
-            yield return new object[]
+            yield return new object?[]
             {
-                new int[0],
-                new int[0]
+                Array.Empty<int>(),
+                Array.Empty<int>()
             };
 
-            yield return new object[]
+            yield return new object?[]
             {
                 null,
-                new int[0]
+                Array.Empty<int>()
             };
         }
 

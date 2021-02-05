@@ -10,7 +10,7 @@ namespace Exercise.Benchmarks.L33tC0d3
     public class SortArrayByParity
     {
         private readonly ParityArraySortator _sortator = new ParityArraySortator();
-        private int[] _data;
+        private int[] _data = null!;
 
         [Params(4, 128, 512)]
         public int InputSize;

@@ -56,7 +56,7 @@ namespace Exercise.Tests.L33tC0d3.RotateImage
         private class IntArrayEqualityComparer : IEqualityComparer<int[]>
         {
             public static readonly IntArrayEqualityComparer Instance = new IntArrayEqualityComparer();
-            public bool Equals(int[] x, int[] y) => x.SequenceEqual(y);
+            public bool Equals(int[]? x, int[]? y) => x != null && y != null && x.SequenceEqual(y);
             public int GetHashCode(int[] obj) => obj.GetHashCode();
         }
     }

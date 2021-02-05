@@ -5,7 +5,7 @@ namespace Exercise.L33tC0d3.MergeSortedLists
     // https://leetcode.com/problems/merge-k-sorted-lists/
     public sealed class LinkedListSortator
     {
-        public ListNode MergeKLists(ListNode[] lists)
+        public ListNode? MergeKLists(ListNode[] lists)
         {
             if (lists == null || lists.Length == 0)
             {
@@ -22,7 +22,7 @@ namespace Exercise.L33tC0d3.MergeSortedLists
             return merged;
         }
 
-        private ListNode MergeLists(ListNode left, ListNode right)
+        private ListNode? MergeLists(ListNode? left, ListNode? right)
         {
             // initial state:
             // -------------

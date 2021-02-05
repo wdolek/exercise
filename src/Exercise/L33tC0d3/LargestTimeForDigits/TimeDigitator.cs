@@ -6,7 +6,7 @@ namespace Exercise.L33tC0d3.LargestTimeForDigits
     // https://leetcode.com/problems/largest-time-for-given-digits/submissions/
     public sealed class TimeDigitator
     {
-        public string LargestTimeFromDigits(int[] A)
+        public string LargestTimeFromDigits(int[]? A)
         {
             if (A == null || A.Length != 4)
             {

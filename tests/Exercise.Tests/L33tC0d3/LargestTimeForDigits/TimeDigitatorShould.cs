@@ -21,8 +21,8 @@ namespace Exercise.Tests.L33tC0d3.LargestTimeForDigits
         [InlineData(new[] { 6, 7, 8, 9 })]
         [InlineData(new[] { 0 })]
         [InlineData(new[] { 0, 1, 2, 3, 4 })]
-        [InlineData(null)]
-        public void ReturnEmpty(int[] input)
+        [InlineData((int[])null!)]
+        public void ReturnEmpty(int[]? input)
         {
             string result = new TimeDigitator().LargestTimeFromDigits(input);
 

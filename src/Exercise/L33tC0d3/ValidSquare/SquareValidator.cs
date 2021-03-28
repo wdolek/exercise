@@ -66,8 +66,7 @@ namespace Exercise.L33tC0d3.ValidSquare
                 || IsSquare(ref a, ref b, ref d, ref c);
         }
 
-        // Fails on input: p1 = { 1, 1 }, p2 = { 0, 1 }, p3 = { 1, 2 }, p4 = { 0, 0 }
-        public bool ValidSquare_Fail(int[] p1, int[] p2, int[] p3, int[] p4)
+        public bool ValidSquareFinished(int[] p1, int[] p2, int[] p3, int[] p4)
         {
             var a = new Point(p1);
             var b = new Point(p2);
@@ -96,6 +95,7 @@ namespace Exercise.L33tC0d3.ValidSquare
             // | /
             // a - b
             if (distB == distD
+                && CalculateSquareDistance(ref b, ref c) == CalculateSquareDistance(ref c, ref d)
                 && 2 * distB == distC
                 && 2 * CalculateSquareDistance(ref b, ref c) == CalculateSquareDistance(ref b, ref d))
             {
@@ -106,6 +106,7 @@ namespace Exercise.L33tC0d3.ValidSquare
             // | /
             // a - c
             if (distC == distD
+                && CalculateSquareDistance(ref c, ref b) == CalculateSquareDistance(ref b, ref d)
                 && 2 * distC == distB
                 && 2 * CalculateSquareDistance(ref c, ref b) == CalculateSquareDistance(ref c, ref d))
             {
@@ -116,6 +117,7 @@ namespace Exercise.L33tC0d3.ValidSquare
             // | /
             // a - b
             if (distB == distC
+                && CalculateSquareDistance(ref b, ref d) == CalculateSquareDistance(ref d, ref c)
                 && 2 * distB == distD
                 && 2 * CalculateSquareDistance(ref b, ref d) == CalculateSquareDistance(ref b, ref c))
             {

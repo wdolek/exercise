@@ -30,12 +30,12 @@ namespace Exercise.Tests.L33tC0d3.ValidSquare
             Assert.Equal(isSquare, validator.ValidSquareApproach3(p1, p2, p3, p4));
         }
 
-        [Theory(Skip ="Not handling all cases correctly")]
+        [Theory]
         [MemberData(nameof(GenerateTestData))]
-        public void ValidateInput_Fail(int[] p1, int[] p2, int[] p3, int[] p4, bool isSquare)
+        public void ValidateInputFinished(int[] p1, int[] p2, int[] p3, int[] p4, bool isSquare)
         {
             var validator = new SquareValidator();
-            Assert.Equal(isSquare, validator.ValidSquare_Fail(p1, p2, p3, p4));
+            Assert.Equal(isSquare, validator.ValidSquareFinished(p1, p2, p3, p4));
         }
 
         public static IEnumerable<object[]> GenerateTestData()

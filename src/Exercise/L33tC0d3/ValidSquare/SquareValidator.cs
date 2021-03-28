@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Exercise.L33tC0d3.ValidSquare
@@ -54,16 +55,50 @@ namespace Exercise.L33tC0d3.ValidSquare
             var c = new Point(p3);
             var d = new Point(p4);
 
-            static bool IsSquare(ref Point p1, ref Point p2, ref Point p3, ref Point p4) =>
-                CalculateSquareDistance(ref p1, ref p2) > 0
-                && CalculateSquareDistance(ref p1, ref p2) == CalculateSquareDistance(ref p2, ref p3)
-                && CalculateSquareDistance(ref p2, ref p3) == CalculateSquareDistance(ref p3, ref p4)
-                && CalculateSquareDistance(ref p3, ref p4) == CalculateSquareDistance(ref p4, ref p1)
-                && CalculateSquareDistance(ref p1, ref p3) == CalculateSquareDistance(ref p2, ref p4);
+            static bool IsSquare(ref Point p1, ref Point p2, ref Point p3, ref Point p4)
+            {
+                // perimeter
+                int distP1toP2 = CalculateSquareDistance(ref p1, ref p2);
+                int distP2toP3 = CalculateSquareDistance(ref p2, ref p3);
+                int distP3toP4 = CalculateSquareDistance(ref p3, ref p4);
+                int distP4toP1 = CalculateSquareDistance(ref p4, ref p1);
+
+                // diagonals
+                int distP1toP3 = CalculateSquareDistance(ref p1, ref p3);
+                int distP2toP4 = CalculateSquareDistance(ref p2, ref p4);
+
+                return distP1toP2 > 0
+                    && distP1toP3 > distP1toP2
+                    && distP1toP2 == distP2toP3
+                    && distP2toP3 == distP3toP4
+                    && distP3toP4 == distP4toP1
+                    && distP1toP3 == distP2toP4;
+            };
 
             return IsSquare(ref a, ref b, ref c, ref d)
                 || IsSquare(ref a, ref c, ref b, ref d)
                 || IsSquare(ref a, ref b, ref d, ref c);
+        }
+
+        public bool ValidSquareWithHashSet(int[] p1, int[] p2, int[] p3, int[] p4)
+        {
+            var a = new Point(p1);
+            var b = new Point(p2);
+            var c = new Point(p3);
+            var d = new Point(p4);
+
+            var distances = new HashSet<int>(
+                new[]
+                {
+                    CalculateSquareDistance(ref a, ref b),
+                    CalculateSquareDistance(ref a, ref c),
+                    CalculateSquareDistance(ref a, ref d),
+                    CalculateSquareDistance(ref b, ref c),
+                    CalculateSquareDistance(ref b, ref d),
+                    CalculateSquareDistance(ref c, ref d),
+                });
+
+            return !distances.Contains(0) && distances.Count == 2;
         }
 
         public bool ValidSquareFinished(int[] p1, int[] p2, int[] p3, int[] p4)
@@ -90,6 +125,8 @@ namespace Exercise.L33tC0d3.ValidSquare
             // 2: c^2 = a^2 + a^2 = 2 * a^2 // for square, a = b
             // 3: c   = sqrt(2 * a^2) = sqrt(2) * sqrt(a^2) = sqrt(2) * a
             // NB! we are already using square lengths
+
+            // TODO: Refactor calls - just change order of inputs, see other solutions
 
             // d   c
             // | /

@@ -14,7 +14,7 @@ namespace Exercise.Tests.L33tC0d3.LongestCommonPrefix
         [InlineData(new[] { "a", "ac" }, "a")]
         [InlineData(new string[0], "")]
         [InlineData(null!, "")]
-        public void ReturnShortestCommonPrefix(string[] strs, string expected)
+        public void ReturnShortestCommonPrefix(string[]? strs, string expected)
         {
             var prefixator = new LongestCommonPrefixator();
             var shortestPrefix = prefixator.LongestCommonPrefix(strs);
